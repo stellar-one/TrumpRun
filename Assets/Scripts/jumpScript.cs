@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class jumpScript : MonoBehaviour
 {
-
     private Rigidbody rb;
-    private BoxCollider cl;
+    float originalHeight = 3;
+    public float reducedHeight;
+    public float ySize;
+    BoxCollider bC;
+
+
+
+
     void Start()
     {
+        bC = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
-        cl = GetComponent<BoxCollider>();
+        originalHeight = bC.size.y;
+
     }
+
+
     public bool isGrounded = false;
     public float jumpHeight = 8f;
-    public int count;
+  
+    
     void Update()
     {
             
@@ -23,6 +34,19 @@ public class jumpScript : MonoBehaviour
                rb.AddForce(Vector3.up * jumpHeight);
                isGrounded = false;           
                Debug.Log("Jump"); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded)
+        {
+            bC.size = new Vector3(bC.size.x, ySize, bC.size.z);
+            isGrounded = false;
+            Debug.Log("Slide");
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            bC.size = new Vector3(bC.size.x, originalHeight, bC.size.z);
+            isGrounded = true;
+            Debug.Log("Stand");
         }
     }
     void OnCollisionEnter(Collision theCollision){
