@@ -10,21 +10,30 @@ public class GameManager : MonoBehaviour
   // GameObject endPoint;
 
   void Awake(){
-    player = GameObject.FindWithTag("Player").transform.GetChild(0).gameObject;
+    player = GameObject.FindWithTag("MainCamera");
     obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
     // endPoint = GameObject.FindWithTag("Finish");
   }
 
   void Start(){
-    StartCoroutine(SpawnObstaclesCoroutine(obstacles[0].transform));
-    StartCoroutine(SpawnObstaclesCoroutine(obstacles[1].transform));
-    StartCoroutine(SpawnObstaclesCoroutine(obstacles[2].transform));
+    StartCoroutine(SpawnObstaclesCoroutine(obstacles));
+    // StartCoroutine(SpawnObstaclesCoroutine(obstacles[1].transform));
+    // StartCoroutine(SpawnObstaclesCoroutine(obstacles[2].transform));
   }
 
-  IEnumerator SpawnObstaclesCoroutine(Transform obstacle){
+  IEnumerator SpawnObstaclesCoroutine(GameObject[] objs){
     WaitForSeconds waitTime = new WaitForSeconds(2);
     while (true) {
-      Instantiate(obstacle, new Vector3(Random.Range(player.transform.localPosition.z, player.transform.localPosition.z + 50f), 2f, Random.Range(-10f, 10f)), Quaternion.identity);
+      GameObject randomObj = objs[Random.Range(0, objs.Length)];
+      if(randomObj.name == "Floating"){
+        Instantiate(randomObj.transform, new Vector3(Random.Range(player.transform.localPosition.x + 100f, player.transform.localPosition.x + 150f), 5f, 0f), Quaternion.identity);
+      }
+      else if(randomObj.name == "Rectangle"){
+        Instantiate(randomObj.transform, new Vector3(Random.Range(player.transform.localPosition.x + 100f, player.transform.localPosition.x + 150f), 2f, Random.Range(-4.5f, 5f)), Quaternion.identity);
+      }
+      else if(randomObj.name == "Cube"){
+        Instantiate(randomObj.transform, new Vector3(Random.Range(player.transform.localPosition.x + 100f, player.transform.localPosition.x + 150f), 2f, Random.Range(-6.5f, 7)), Quaternion.identity);
+      }
       yield return waitTime;
     }
   }
