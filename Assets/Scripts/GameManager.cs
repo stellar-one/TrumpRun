@@ -10,19 +10,17 @@ public class GameManager : MonoBehaviour
   // GameObject endPoint;
 
   void Awake(){
-    player = GameObject.FindWithTag("MainCamera");
+    player = GameObject.FindWithTag("MainCamera"); // current solution because player game object falls through the ground...
     obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
     // endPoint = GameObject.FindWithTag("Finish");
   }
 
   void Start(){
     StartCoroutine(SpawnObstaclesCoroutine(obstacles));
-    // StartCoroutine(SpawnObstaclesCoroutine(obstacles[1].transform));
-    // StartCoroutine(SpawnObstaclesCoroutine(obstacles[2].transform));
   }
 
   IEnumerator SpawnObstaclesCoroutine(GameObject[] objs){
-    WaitForSeconds waitTime = new WaitForSeconds(2);
+    WaitForSeconds waitTime = new WaitForSeconds(1);
     while (true) {
       GameObject randomObj = objs[Random.Range(0, objs.Length)];
       if(randomObj.name == "Floating"){
