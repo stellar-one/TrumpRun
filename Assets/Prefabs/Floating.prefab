@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 6274845368005608288}
   - component: {fileID: 6274845368005608292}
   m_Layer: 0
-  m_Name: M_FloatingObstacle
+  m_Name: Floating
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

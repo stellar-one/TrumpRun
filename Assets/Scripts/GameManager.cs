@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour
 {
   GameObject player;
   GameObject[] obstacles;
+  int objectSpawnTime;
   // GameObject endPoint;
 
   void Awake(){
     player = GameObject.FindWithTag("MainCamera"); // current solution because player game object falls through the ground...
     obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+    objectSpawnTime = 5;
     // endPoint = GameObject.FindWithTag("Finish");
   }
 
@@ -20,18 +22,10 @@ public class GameManager : MonoBehaviour
   }
 
   IEnumerator SpawnObstaclesCoroutine(GameObject[] objs){
-    WaitForSeconds waitTime = new WaitForSeconds(1);
+    WaitForSeconds waitTime = new WaitForSeconds(objectSpawnTime);
     while (true) {
       GameObject randomObj = objs[Random.Range(0, objs.Length)];
-      if(randomObj.name == "Floating"){
-        Instantiate(randomObj.transform, new Vector3(Random.Range(player.transform.localPosition.x + 100f, player.transform.localPosition.x + 150f), 5f, 0f), Quaternion.identity);
-      }
-      else if(randomObj.name == "Rectangle"){
-        Instantiate(randomObj.transform, new Vector3(Random.Range(player.transform.localPosition.x + 100f, player.transform.localPosition.x + 150f), 2f, Random.Range(-4.5f, 5f)), Quaternion.identity);
-      }
-      else if(randomObj.name == "Cube"){
-        Instantiate(randomObj.transform, new Vector3(Random.Range(player.transform.localPosition.x + 100f, player.transform.localPosition.x + 150f), 2f, Random.Range(-6.5f, 7)), Quaternion.identity);
-      }
+      randomObj.GetComponent<Obstacle>().spawnObject(randomObj, player);
       yield return waitTime;
     }
   }
