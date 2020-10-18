@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Paths : MonoBehaviour
 {
-    // Vector3 position {get; set; }
     protected float x { get; set; }
     protected float y { get; set; }
     protected float z { get; set; }
@@ -15,8 +14,8 @@ public class Paths : MonoBehaviour
         this.z = 0f;
     }
 
-    public void spawnPath(GameObject randomPath, GameObject endPoint){
-        this.x = endPoint.transform.localPosition.x;
+    public void spawnPath(GameObject randomPath){
+        this.x = randomPath.transform.position.x; // needs to be endpoint of the new path
         Instantiate(randomPath, new Vector3(this.x, this.y, this.z), Quaternion.identity);
     }
 }

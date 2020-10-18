@@ -9,14 +9,12 @@ public class GameManager : MonoBehaviour
   GameObject[] obstacles;
   GameObject[] paths;
   int objectSpawnTime;
-  GameObject endPoint;
 
   void Awake(){
     player = GameObject.FindWithTag("MainCamera"); // current solution because player game object falls through the ground...
     obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
     paths = GameObject.FindGameObjectsWithTag("Path");
     objectSpawnTime = 5;
-    // endPoint = GameObject.FindWithTag("Finish");
   }
 
   void Start(){
@@ -34,10 +32,10 @@ public class GameManager : MonoBehaviour
   }
 
   IEnumerator generatePath(GameObject[] paths){
-    WaitForSeconds waitTime = new WaitForSeconds(15);
+    WaitForSeconds waitTime = new WaitForSeconds(5);
     while (true) {
       GameObject randomPath = paths[Random.Range(0, paths.Length)];
-      randomPath.GetComponent<Paths>().spawnPath(randomPath, randomPath);
+      randomPath.GetComponent<Paths>().spawnPath(randomPath);
       yield return waitTime;
     }
   }

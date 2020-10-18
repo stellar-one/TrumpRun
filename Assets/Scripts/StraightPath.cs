@@ -5,7 +5,7 @@ using UnityEngine;
 public class StraightPath : Paths
 {
     void Start(){
-        this.x = 650f;
+        this.x = 0f;
         this.y = 4f;
         this.z = 0f;
     }
