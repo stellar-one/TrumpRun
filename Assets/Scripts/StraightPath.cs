@@ -5,8 +5,7 @@ using UnityEngine;
 public class StraightPath : Paths
 {
     void Start(){
-        this.x = 0f;
-        this.y = 4f;
-        this.z = 0f;
+        // this.spawnPosition.Set(0f, 4f, 0f);
+        this.spawnPosition = new Vector3(0f, 4f, 0f);
     }
 }

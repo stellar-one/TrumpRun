@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
   GameObject player;
   GameObject[] obstacles;
   GameObject[] paths;
+  public GameObject lastPath;
   int objectSpawnTime;
 
   void Awake(){
@@ -35,7 +36,8 @@ public class GameManager : MonoBehaviour
     WaitForSeconds waitTime = new WaitForSeconds(5);
     while (true) {
       GameObject randomPath = paths[Random.Range(0, paths.Length)];
-      randomPath.GetComponent<Paths>().spawnPath(randomPath);
+      randomPath.GetComponent<Paths>().spawnPath(randomPath, lastPath);
+      lastPath = randomPath;
       yield return waitTime;
     }
   }
