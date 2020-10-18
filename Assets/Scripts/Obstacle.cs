@@ -16,7 +16,7 @@ public class Obstacle : MonoBehaviour
     }
 
     public void spawnObject(GameObject radomObj, GameObject player){
-        this.x = Random.Range(player.transform.localPosition.x + 100f, player.transform.localPosition.x + 150f);
+        this.x = Random.Range(player.transform.localPosition.x + 50f, player.transform.localPosition.x + 100f);
         Instantiate(radomObj, new Vector3(this.x, this.y, this.z), Quaternion.identity);
     }
 }

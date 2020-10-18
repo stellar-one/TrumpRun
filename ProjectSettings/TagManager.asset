@@ -9,6 +9,7 @@ TagManager:
   - Jump
   - Player Position
   - Obstacle
+  - Path
   layers:
   - Default
   - TransparentFX
