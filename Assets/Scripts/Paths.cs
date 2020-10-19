@@ -15,18 +15,18 @@ public class Paths : MonoBehaviour
     public void spawnPath(GameObject randomPath){
         if(randomPath.name == "Straight Path")
         {
-            Vector3 localOffset = new Vector3(currentOffset, 0, 0);
-            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset.x, spawnPosition.y, spawnPosition.z), Quaternion.identity);
+            float localOffset = currentOffset;
+            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset, spawnPosition.y, spawnPosition.z), Quaternion.identity);
             currentOffset += 162f;
         }
         else if(randomPath.name == "Left Path"){
-            Vector3 localOffset = new Vector3(currentOffset, 0, 0);
-            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset.x, spawnPosition.y, spawnPosition.z), Quaternion.Euler(0f, -90f, 0f));
+            float localOffset = currentOffset;
+            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset, spawnPosition.y, spawnPosition.z), Quaternion.Euler(0f, -90f, 0f));
             currentOffset += 162f;
         }
         else if(randomPath.name == "Right Path"){
-            Vector3 localOffset = new Vector3(currentOffset, 0, 0);
-            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset.x, spawnPosition.y, spawnPosition.z), Quaternion.Euler(0f, 90f, 0f));
+            float localOffset = currentOffset;
+            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset, spawnPosition.y, spawnPosition.z), Quaternion.Euler(0f, 90f, 0f));
             currentOffset += 162f;
             // this.transform.Rotate(new Vector3(0f, leftRight[Random.Range(0, leftRight.Length)], 0f));
         }
