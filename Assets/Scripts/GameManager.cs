@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour
   GameObject[] paths;
   public GameObject randomPath;
   int objectSpawnTime;
+  GameObject endPoint;
 
   void Awake(){
     player = GameObject.FindWithTag("MainCamera"); // current solution because player game object falls through the ground...
     obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
     paths = GameObject.FindGameObjectsWithTag("Path");
     objectSpawnTime = 5;
+    // endPoint = GameObject.FindWithTag("Finish");
   }
 
   void Start(){
@@ -33,10 +35,15 @@ public class GameManager : MonoBehaviour
   }
 
   IEnumerator generatePath(GameObject[] paths){
-    WaitForSeconds waitTime = new WaitForSeconds(5);
+    WaitForSeconds waitTime = new WaitForSeconds(15);
     while (true) {
+<<<<<<< HEAD
       randomPath = paths[Random.Range(0, paths.Length)];
       randomPath.GetComponent<Paths>().spawnPath(randomPath);
+=======
+      GameObject randomPath = paths[Random.Range(0, paths.Length)];
+      randomPath.GetComponent<Paths>().spawnPath(randomPath, randomPath);
+>>>>>>> parent of b745d6f... saving progress, see description...
       yield return waitTime;
     }
   }
