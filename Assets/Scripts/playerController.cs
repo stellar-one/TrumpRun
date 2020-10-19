@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
@@ -17,13 +18,20 @@ public class playerController : MonoBehaviour
     public Animator animator;
     public GameObject baseMesh;
     public float coins = 0;
-    
+    public Text coinText;
+
+    public GameObject heart;
+    public GameObject heart1;
+    public GameObject heart2;
+
 
 
 
 
     public void Update()
     {
+
+        coinText.text = coins.ToString();
         if (foward)
         {
             this.gameObject.transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
@@ -73,7 +81,19 @@ public class playerController : MonoBehaviour
             Health = Health - 1f;
             Debug.Log("hit");
             animator.SetTrigger("hit");
-          
+            heart.SetActive(false);
+
+            if(Health == 1) 
+            {
+                heart1.SetActive(false);
+            }
+
+            if (Health == 0f)
+            {
+                heart2.SetActive(false);
+            }
+
+
 
             if (Health == 0f)
             {
