@@ -1900,6 +1900,7 @@ MonoBehaviour:
   animator: {fileID: 1857673466}
   baseMesh: {fileID: 983222958}
   coins: 0
+  coinText: {fileID: 817887388}
   heart: {fileID: 370054534}
   heart1: {fileID: 293207229}
   heart2: {fileID: 1510462070}
