@@ -24,6 +24,8 @@ public class playerController : MonoBehaviour
     public GameObject heart1;
     public GameObject heart2;
 
+    public Transform targetCam;
+
 
 
 
@@ -33,9 +35,12 @@ public class playerController : MonoBehaviour
 
         coinText.text = coins.ToString();
         if (foward)
+
         {
             this.gameObject.transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
-            
+            targetCam.transform.position = new Vector3(baseMesh.transform.position.x - 8f, 6, 0);
+
+
 
             if (Input.GetKey(KeyCode.A))
             {
@@ -60,10 +65,26 @@ public class playerController : MonoBehaviour
             this.gameObject.transform.Translate(Vector3.left * runSpeed * Time.deltaTime);
           
         }
+
         if (right)
         {
             this.gameObject.transform.Translate(Vector3.right * runSpeed * Time.deltaTime);
-          
+            targetCam.transform.position = new Vector3(baseMesh.transform.position.x, 6, baseMesh.transform.position.z + 8);
+
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                this.gameObject.transform.Translate(Vector3.forward * strafeSpeed * Time.deltaTime);
+
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                this.gameObject.transform.Translate(Vector3.back * strafeSpeed * Time.deltaTime);
+
+            }
+
+           
+
         }
 
         if(Input.GetKeyDown(KeyCode.A))
@@ -111,7 +132,17 @@ public class playerController : MonoBehaviour
 
 
 
+        if(triggered.gameObject.tag == "Turn")
+        {
+            foward = false;
+            right = true;
+            baseMesh.transform.Rotate( 0, 90, 0);
+            targetCam.Rotate(15, 90,-15);
+    
 
+
+
+        }
 
 
 
