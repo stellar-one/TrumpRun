@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Paths : MonoBehaviour
 {
-    protected Vector3 spawnPosition { get; set; }
-    private float currentOffset { get; set; }
+    Vector3 spawnPosition { get; set; }
+    float currentOffset { get; set; }
 
     public Paths(){
         this.spawnPosition = new Vector3(0f, 0f, 0f);
@@ -13,8 +13,25 @@ public class Paths : MonoBehaviour
     }
 
     public void spawnPath(GameObject randomPath){
-        Vector3 localOffset = new Vector3(currentOffset, 0, 0); //offset for first road block
-        Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset.x, spawnPosition.y, spawnPosition.z), Quaternion.identity);
-        currentOffset += 162f;
+        if(randomPath.name == "Straight Path")
+        {
+            Vector3 localOffset = new Vector3(currentOffset, 0, 0);
+            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset.x, spawnPosition.y, spawnPosition.z), Quaternion.identity);
+            currentOffset += 162f;
+        }
+        else if(randomPath.name == "Left Path"){
+            Vector3 localOffset = new Vector3(currentOffset, 0, 0);
+            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset.x, spawnPosition.y, spawnPosition.z), Quaternion.Euler(0f, -90f, 0f));
+            currentOffset += 162f;
+        }
+        else if(randomPath.name == "Right Path"){
+            Vector3 localOffset = new Vector3(currentOffset, 0, 0);
+            Instantiate(randomPath, new Vector3(randomPath.transform.position.x + localOffset.x, spawnPosition.y, spawnPosition.z), Quaternion.Euler(0f, 90f, 0f));
+            currentOffset += 162f;
+            // this.transform.Rotate(new Vector3(0f, leftRight[Random.Range(0, leftRight.Length)], 0f));
+        }
+        else{
+            Debug.Log("Error: no path found.");
+        }
     }
 }
