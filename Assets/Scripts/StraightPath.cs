@@ -6,6 +6,6 @@ public class StraightPath : Paths
 {
     void Start(){
         // this.spawnPosition.Set(0f, 4f, 0f);
-        this.spawnPosition = new Vector3(0f, 4f, 0f);
+        this.spawnPosition = new Vector3(0f, 0f, 0f);
     }
 }
