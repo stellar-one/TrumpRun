@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    public float Health = 3f;
     public float runSpeed;
     public float strafeSpeed;
     public bool foward;
@@ -13,23 +14,30 @@ public class playerController : MonoBehaviour
     public Transform L_lane;
     public Transform M_lane;
     public Transform R_lane;
+    public Animator animator;
+    public GameObject baseMesh;
+    public float coins = 0;
+    
+
+
+
 
     public void Update()
     {
         if (foward)
         {
             this.gameObject.transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
-            Debug.Log("Foward");
+            
 
             if (Input.GetKey(KeyCode.A))
             {
                 this.gameObject.transform.Translate(Vector3.left * strafeSpeed * Time.deltaTime);
-                Debug.Log("Left");
+              
             }
             if (Input.GetKey(KeyCode.D))
             {
                 this.gameObject.transform.Translate(Vector3.right * strafeSpeed * Time.deltaTime);
-                Debug.Log("Left");
+               
             }
         }
 
@@ -37,24 +45,52 @@ public class playerController : MonoBehaviour
         if (back)
         {
             this.gameObject.transform.Translate(Vector3.back * runSpeed * Time.deltaTime);
-            Debug.Log("Back");
+           
         }
         if (left)
         {
             this.gameObject.transform.Translate(Vector3.left * runSpeed * Time.deltaTime);
-            Debug.Log("Left");
+          
         }
         if (right)
         {
             this.gameObject.transform.Translate(Vector3.right * runSpeed * Time.deltaTime);
-            Debug.Log("Right");
+          
         }
 
         if(Input.GetKeyDown(KeyCode.A))
         {
             this.gameObject.transform.Translate(Vector3.left * runSpeed * Time.deltaTime);
-            Debug.Log("Left");
+           
         }
+    }
+
+
+    private void OnTriggerEnter(Collider triggered)
+    {
+        if(triggered.gameObject.tag == "Enemy")
+        {
+            Health = Health - 1f;
+            Debug.Log("hit");
+            animator.SetTrigger("hit");
+          
+
+            if (Health == 0f)
+            {
+                Debug.Log("Dead");
+                animator.SetTrigger("killed");
+
+            }
+        }
+
+        if(triggered.gameObject.tag == "Coin")
+        {
+            coins++;
+            Destroy(triggered.gameObject);
+        }
+
+
+
 
 
 
@@ -67,5 +103,16 @@ public class playerController : MonoBehaviour
 
 
     }
-  
+
+
+
+
+
+
+
+
+
+
+
+
 }
