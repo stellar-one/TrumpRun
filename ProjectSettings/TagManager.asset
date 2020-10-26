@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Coin
   - Jump
+  - Left Turn
+  - Right Turn
   layers:
   - Default
   - TransparentFX
