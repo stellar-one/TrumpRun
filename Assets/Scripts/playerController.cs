@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
     public bool foward;
     public bool back;
     public bool left;
-    public bool right;
+    public bool right = true;
     public Animator animator;
     public float coins = 0;
     public Text coinText;
@@ -26,9 +26,9 @@ public class playerController : MonoBehaviour
 
         if (colidder == true)
         {
-            if ((Input.GetKeyDown(KeyCode.D)))
+            if ((Input.GetKeyDown(KeyCode.D))) // RIGHT
             {
-                if (foward)
+                if (foward) // Turn Right from foward
                 {
                     Debug.Log("R_Turn");
                     foward = false;
@@ -36,20 +36,99 @@ public class playerController : MonoBehaviour
                     left = false;
                     back = false;
                     baseMesh.transform.Rotate(0, 90, 0);
-                    targetCam.transform.Rotate(15, 90, -15);
+                    targetCam.transform.Rotate(15, 90, 15);
                 }
+
+                else if (right) // Turn Right from Right
+                {
+                    Debug.Log("L_Turn");
+                    foward = false;
+                    right = false;
+                    left = false;
+                    back = true;
+                    baseMesh.transform.Rotate(0, 90, 0);
+                    targetCam.transform.Rotate(15, 90, 15);
+                 
+
+                }
+
+                else if (left) // Turn Right from Left
+                {
+                    Debug.Log("L_Turn");
+                    foward = true;
+                    right = false;
+                    left = false;
+                    back = false;
+                    baseMesh.transform.Rotate(0, 90, 0);
+                    targetCam.transform.Rotate(15, 90, 15);
+                }
+
+                else if (back) // Turn Right from back
+                {
+                    Debug.Log("L_Turn");
+                    foward = false;
+                    right = false;
+                    left = true;
+                    back = false;
+                    baseMesh.transform.Rotate(0, 90, 0);
+                    targetCam.transform.Rotate(15, 90, 15);
+                }
+
+
 
             }
 
-            if ((Input.GetKeyDown(KeyCode.A)))
+            if ((Input.GetKeyDown(KeyCode.A))) // LEFT
             {
-                Debug.Log("L_Turn");
-                foward = false;
-                right = false;
-                left = true;
-                back = false;
-                baseMesh.transform.Rotate(0,-90, 0);
-                targetCam.transform.Rotate(15, -90, 15);
+                if (foward) // Turn Left from foward
+                {
+                    Debug.Log("L_Turn");
+                    foward = false;
+                    right = false;
+                    left = true;
+                    back = false;
+                    baseMesh.transform.Rotate(0, -90, 0);
+                    targetCam.transform.Rotate(15, -90, 15);
+                }
+
+
+                else if (right) // Turn Left
+                {
+                    Debug.Log("L_Turn");
+                    foward = true;
+                    right = false;
+                    left = false;
+                    back = false;
+                    baseMesh.transform.Rotate(0, -90, 0);
+                    targetCam.transform.Rotate(15, -90, 15);
+                }
+
+                else if (left) // Turn Left from Left
+                {
+                    Debug.Log("L_Turn");
+                    foward = false;
+                    right = false;
+                    left = false;
+                    back = true;
+                    baseMesh.transform.Rotate(0, -90, 0);
+                    targetCam.transform.Rotate(15, -90, 15);
+                }
+
+               else if (back) // Turn Left from back
+                {
+                    Debug.Log("L_Turn");
+                    foward = false;
+                    right = true;
+                    left = false;
+                    back = false;
+                    baseMesh.transform.Rotate(0, -90, 0);
+                    targetCam.transform.Rotate(15, -90, 15);
+                }
+
+
+
+
+
             }
         }
 
@@ -58,7 +137,7 @@ public class playerController : MonoBehaviour
         if (foward)
         {
             this.gameObject.transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
-            targetCam.transform.position = new Vector3(baseMesh.transform.position.x - 8f, 6, 0);
+            targetCam.transform.position = new Vector3(baseMesh.transform.position.x - 8f, 6, baseMesh.transform.position.z);
 
             if (Input.GetKey(KeyCode.A))
             {
@@ -74,7 +153,8 @@ public class playerController : MonoBehaviour
         if (back)
         {
             this.gameObject.transform.Translate(Vector3.back * runSpeed * Time.deltaTime);
-            targetCam.transform.position = new Vector3(baseMesh.transform.position.x - 8f, 6, 0);
+            targetCam.transform.position = new Vector3(baseMesh.transform.position.x + 8f, 6, baseMesh.transform.position.z);
+
 
             if (Input.GetKey(KeyCode.A))
             {
@@ -117,12 +197,17 @@ public class playerController : MonoBehaviour
         }
     }
 
+
+
+
+
     private void OnTriggerEnter(Collider triggered)
     {
         if (triggered.gameObject.tag == "Right Turn")
         {
             colidder = true;
         }
+
         if(triggered.gameObject.tag == "Enemy")
         {
             Health = Health - 1f;
