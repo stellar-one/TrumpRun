@@ -18,60 +18,59 @@ public class playerController : MonoBehaviour
     public GameObject baseMesh,heart,heart1,heart2;
     public Transform targetCam;
     private bool colidder = false;
+    private bool didTurn = false;
+    private bool dead = false;
   
    
     public void Update()
     {
         coinText.text = coins.ToString();
 
-        if (colidder == true)
+        if (colidder == true && didTurn == false)
         {
             if ((Input.GetKeyDown(KeyCode.D))) // RIGHT
             {
+                didTurn = true;
                 if (foward) // Turn Right from foward
                 {
-                    Debug.Log("R_Turn");
                     foward = false;
                     right = true;
                     left = false;
                     back = false;
                     baseMesh.transform.Rotate(0, 90, 0);
-                    targetCam.transform.Rotate(15, 90, 15);
+                    targetCam.transform.localRotation = Quaternion.Euler(15,180,0);
                 }
 
                 else if (right) // Turn Right from Right
                 {
-                    Debug.Log("L_Turn");
                     foward = false;
                     right = false;
                     left = false;
                     back = true;
                     baseMesh.transform.Rotate(0, 90, 0);
-                    targetCam.transform.Rotate(15, 90, 15);
-                 
+                    targetCam.transform.localRotation = Quaternion.Euler(15, -90, 0);
+
 
                 }
 
                 else if (left) // Turn Right from Left
                 {
-                    Debug.Log("L_Turn");
                     foward = true;
                     right = false;
                     left = false;
                     back = false;
                     baseMesh.transform.Rotate(0, 90, 0);
-                    targetCam.transform.Rotate(15, 90, 15);
+                    targetCam.transform.localRotation = Quaternion.Euler(15, 90, 0);
                 }
 
                 else if (back) // Turn Right from back
                 {
-                    Debug.Log("L_Turn");
                     foward = false;
                     right = false;
                     left = true;
                     back = false;
                     baseMesh.transform.Rotate(0, 90, 0);
-                    targetCam.transform.Rotate(15, 90, 15);
+                    targetCam.transform.localRotation = Quaternion.Euler(15, 0, 0);
                 }
 
 
@@ -80,49 +79,46 @@ public class playerController : MonoBehaviour
 
             if ((Input.GetKeyDown(KeyCode.A))) // LEFT
             {
+                didTurn = true;
                 if (foward) // Turn Left from foward
-                {
-                    Debug.Log("L_Turn");
+                {          
                     foward = false;
                     right = false;
                     left = true;
                     back = false;
                     baseMesh.transform.Rotate(0, -90, 0);
-                    targetCam.transform.Rotate(15, -90, 15);
+                    targetCam.transform.localRotation = Quaternion.Euler(15, 0, 0);
                 }
 
 
                 else if (right) // Turn Left
-                {
-                    Debug.Log("L_Turn");
+                {                
                     foward = true;
                     right = false;
                     left = false;
                     back = false;
                     baseMesh.transform.Rotate(0, -90, 0);
-                    targetCam.transform.Rotate(15, -90, 15);
+                    targetCam.transform.localRotation = Quaternion.Euler(15, 90, 0);
                 }
 
                 else if (left) // Turn Left from Left
-                {
-                    Debug.Log("L_Turn");
+                {                
                     foward = false;
                     right = false;
                     left = false;
                     back = true;
                     baseMesh.transform.Rotate(0, -90, 0);
-                    targetCam.transform.Rotate(15, -90, 15);
+                    targetCam.transform.localRotation = Quaternion.Euler(15, -90, 0);
                 }
 
                else if (back) // Turn Left from back
-                {
-                    Debug.Log("L_Turn");
+                {            
                     foward = false;
                     right = true;
                     left = false;
                     back = false;
                     baseMesh.transform.Rotate(0, -90, 0);
-                    targetCam.transform.Rotate(15, -90, 15);
+                    targetCam.transform.localRotation = Quaternion.Euler(15, 180, 0);
                 }
 
 
@@ -134,7 +130,7 @@ public class playerController : MonoBehaviour
 
 
       
-        if (foward)
+        if (foward && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
             targetCam.transform.position = new Vector3(baseMesh.transform.position.x - 8f, 6, baseMesh.transform.position.z);
@@ -150,7 +146,7 @@ public class playerController : MonoBehaviour
         }
 
 
-        if (back)
+        if (back && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.back * runSpeed * Time.deltaTime);
             targetCam.transform.position = new Vector3(baseMesh.transform.position.x + 8f, 6, baseMesh.transform.position.z);
@@ -166,7 +162,7 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if (left)
+        if (left && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.left * runSpeed * Time.deltaTime);
             targetCam.transform.position = new Vector3(baseMesh.transform.position.x, 6, baseMesh.transform.position.z - 8);
@@ -181,7 +177,7 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if (right)
+        if (right && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.right * runSpeed * Time.deltaTime);
             targetCam.transform.position = new Vector3(baseMesh.transform.position.x, 6, baseMesh.transform.position.z + 8);
@@ -203,9 +199,10 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider triggered)
     {
-        if (triggered.gameObject.tag == "Right Turn")
+        if (triggered.gameObject.tag == "Turn")
         {
             colidder = true;
+            
         }
 
         if(triggered.gameObject.tag == "Enemy")
@@ -225,8 +222,10 @@ public class playerController : MonoBehaviour
             }
             if (Health == 0f)
             {
+                dead = true;
                 Debug.Log("Dead");
-                animator.SetTrigger("killed");
+                animator.SetTrigger("killed"); 
+                
             }
         }
         if(triggered.gameObject.tag == "Coin")
@@ -236,11 +235,15 @@ public class playerController : MonoBehaviour
         }
     }
 
+    
+
+
     private void OnTriggerExit(Collider triggered)
     {
-        if (triggered.gameObject.tag == "Right Turn")
+        if (triggered.gameObject.tag == "Turn")
         {
             colidder = false;
+            didTurn = false;
         }
     }
 
