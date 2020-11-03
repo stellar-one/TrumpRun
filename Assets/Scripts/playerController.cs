@@ -180,22 +180,21 @@ public class playerController : MonoBehaviour
         }
         if(triggered.gameObject.tag == "Enemy")
         {
-            Health = Health -1f;
+            Health = Health - 1f;
             Debug.Log("hit");
             animator.SetTrigger("hit");
             heart.SetActive(false);
 
-            if(Health == 1f) 
+            if(Health == 1) 
             {
                 heart1.SetActive(false);
             }
-           /* if (Health == 0f)
-            {
-                heart2.SetActive(false);
-            }*/
             if (Health == 0f)
             {
                 heart2.SetActive(false);
+            }
+            if (Health == 0f)
+            {
                 dead = true;
                 Debug.Log("Dead");
                 animator.SetTrigger("killed"); 
@@ -209,7 +208,7 @@ public class playerController : MonoBehaviour
         }
         if(triggered.gameObject.tag == "Finish")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(sceneBuildIndex: 1);
         }
     }
 

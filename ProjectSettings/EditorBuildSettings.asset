@@ -5,15 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Blackout_v1.unity
-    guid: 2a4623ccceea4a345b515c375aa5c270
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Blackout_v2.unity
     guid: f7d2a023117469042b3d65b66c0e962a
-  - enabled: 1
-    path: Assets/Scenes/Blackout_v3.unity
-    guid: 6de90329bb952a8479873140fc3c40a8
   - enabled: 1
     path: Assets/Scenes/JN_Scene.unity
     guid: 7327b9ce47e1bcc4998873caa5052e5c
