@@ -208,7 +208,7 @@ public class playerController : MonoBehaviour
         }
         if(triggered.gameObject.tag == "Finish")
         {
-            SceneManager.LoadScene(sceneBuildIndex: 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
