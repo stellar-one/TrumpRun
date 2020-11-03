@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5902275029284608125}
-  - component: {fileID: 5902275029284608126}
+  - component: {fileID: 8287949046576014057}
   m_Layer: 0
   m_Name: Base_Cam
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15, y: 90, z: 0}
---- !u!114 &5902275029284608126
+--- !u!114 &8287949046576014057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

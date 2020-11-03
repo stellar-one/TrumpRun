@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Blackout_v3.unity
     guid: e8bf5454030048c439fc781b3e8503ee
+  - enabled: 1
+    path: Assets/Scenes/Blackout_v4.unity
+    guid: bfbe9680660803e4ab77c2f927b4544b
   m_configObjects: {}

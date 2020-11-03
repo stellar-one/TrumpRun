@@ -3801,14 +3801,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5902275029284608126, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 794860279}
     - target: {fileID: 5902275029284608127, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
       propertyPath: m_Name
       value: Base_Cam
       objectReference: {fileID: 0}
+    - target: {fileID: 8287949046576014057, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 794860279}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
 --- !u!4 &1721766454 stripped
