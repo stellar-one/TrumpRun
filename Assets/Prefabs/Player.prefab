@@ -4392,7 +4392,6 @@ GameObject:
   - component: {fileID: 6660536580174312989}
   - component: {fileID: 6660536580174312988}
   - component: {fileID: 6660536580174312987}
-  - component: {fileID: 6660536580174312984}
   m_Layer: 0
   m_Name: BaseMesh
   m_TagString: Untagged
@@ -4480,22 +4479,6 @@ CapsuleCollider:
   m_Height: 6
   m_Direction: 1
   m_Center: {x: 0, y: 2.53, z: 0}
---- !u!114 &6660536580174312984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6660536580174312963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7f23d55e2739e141b88d7a8318fe011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reducedHeight: 3
-  ySize: 0
-  isGrounded: 1
-  jumpHeight: 300
 --- !u!1 &6660536582093188572
 GameObject:
   m_ObjectHideFlags: 0
