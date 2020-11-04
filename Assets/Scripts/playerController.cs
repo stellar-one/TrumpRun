@@ -19,9 +19,18 @@ public class playerController : MonoBehaviour
     public GameObject baseMesh,heart,heart1,heart2;
     public Transform targetCam;
     private bool colidder = false;
-    private bool didTurn = false;
+    public bool didTurn = false;
     private bool dead = false;
-  
+    followCam followCamScript;
+
+    void Awake()
+    {
+       followCamScript = GameObject.Find("Base_Cam").GetComponent<followCam>();
+
+    }
+
+
+
     public void Update()
     {
         coinText.text = coins.ToString();
@@ -114,7 +123,7 @@ public class playerController : MonoBehaviour
         if (foward && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
-            targetCam.transform.position = new Vector3(baseMesh.transform.position.x - 8f, 6, baseMesh.transform.position.z);
+           // targetCam.transform.position = new Vector3(baseMesh.transform.position.x - 8f, 6, baseMesh.transform.position.z);
 
             if (Input.GetKey(KeyCode.A))
             {
@@ -128,7 +137,7 @@ public class playerController : MonoBehaviour
         if (back && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.back * runSpeed * Time.deltaTime);
-            targetCam.transform.position = new Vector3(baseMesh.transform.position.x + 8f, 6, baseMesh.transform.position.z);
+            //targetCam.transform.position = new Vector3(baseMesh.transform.position.x + 8f, 6, baseMesh.transform.position.z);
 
 
             if (Input.GetKey(KeyCode.A))
@@ -143,7 +152,7 @@ public class playerController : MonoBehaviour
         if (left && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.left * runSpeed * Time.deltaTime);
-            targetCam.transform.position = new Vector3(baseMesh.transform.position.x, 6, baseMesh.transform.position.z - 8);
+            //targetCam.transform.position = new Vector3(baseMesh.transform.position.x, 6, baseMesh.transform.position.z - 8);
 
             if (Input.GetKey(KeyCode.A))
             {
@@ -157,7 +166,7 @@ public class playerController : MonoBehaviour
         if (right && dead == false)
         {
             this.gameObject.transform.Translate(Vector3.right * runSpeed * Time.deltaTime);
-            targetCam.transform.position = new Vector3(baseMesh.transform.position.x, 6, baseMesh.transform.position.z + 8);
+           // targetCam.transform.position = new Vector3(baseMesh.transform.position.x, 6, baseMesh.transform.position.z + 8);
 
             if (Input.GetKey(KeyCode.A))
             {
@@ -171,21 +180,41 @@ public class playerController : MonoBehaviour
     }
 
 
+    
+
     private void OnTriggerEnter(Collider triggered)
     {
+        if (triggered.gameObject.tag == "Fall")
+        {
+            dead = true;
+            Debug.Log("Dead");
+            animator.SetTrigger("killed");
+        }
+    }
+
+    private void OnTriggerStay(Collider triggered)
+    {
+        if (triggered.gameObject.tag == "CamSet")
+        {
+            if (didTurn)
+            {
+                followCamScript.currentCamCenter = triggered.transform;
+            }
+        }
+
         if (triggered.gameObject.tag == "Turn")
         {
             colidder = true;
-            
+
         }
-        if(triggered.gameObject.tag == "Enemy")
+        if (triggered.gameObject.tag == "Enemy")
         {
             Health = Health - 1f;
             Debug.Log("hit");
             animator.SetTrigger("hit");
             heart.SetActive(false);
 
-            if(Health == 1) 
+            if (Health == 1)
             {
                 heart1.SetActive(false);
             }
@@ -197,24 +226,20 @@ public class playerController : MonoBehaviour
             {
                 dead = true;
                 Debug.Log("Dead");
-                animator.SetTrigger("killed"); 
-                
+                animator.SetTrigger("killed");
+
             }
         }
-        if(triggered.gameObject.tag == "Coin")
+        if (triggered.gameObject.tag == "Coin")
         {
             coins++;
             Destroy(triggered.gameObject);
         }
-        if(triggered.gameObject.tag == "Finish")
+        if (triggered.gameObject.tag == "Finish")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-
-    
-
-
     private void OnTriggerExit(Collider triggered)
     {
         if (triggered.gameObject.tag == "Turn")
@@ -222,7 +247,5 @@ public class playerController : MonoBehaviour
             colidder = false;
             didTurn = false;
         }
-    }
-
-   
+    }  
 }

@@ -9,6 +9,8 @@ TagManager:
   - Jump
   - Turn
   - Ground
+  - CamSet
+  - Fall
   layers:
   - Default
   - TransparentFX
