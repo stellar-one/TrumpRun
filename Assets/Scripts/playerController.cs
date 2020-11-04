@@ -180,8 +180,6 @@ public class playerController : MonoBehaviour
     }
 
 
-    
-
     private void OnTriggerEnter(Collider triggered)
     {
         if (triggered.gameObject.tag == "Fall")
@@ -190,23 +188,12 @@ public class playerController : MonoBehaviour
             Debug.Log("Dead");
             animator.SetTrigger("killed");
         }
-    }
-
-    private void OnTriggerStay(Collider triggered)
-    {
-        if (triggered.gameObject.tag == "CamSet")
-        {
-            if (didTurn)
-            {
-                followCamScript.currentCamCenter = triggered.transform;
-            }
-        }
 
         if (triggered.gameObject.tag == "Turn")
         {
             colidder = true;
-
         }
+
         if (triggered.gameObject.tag == "Enemy")
         {
             Health = Health - 1f;
@@ -230,6 +217,7 @@ public class playerController : MonoBehaviour
 
             }
         }
+
         if (triggered.gameObject.tag == "Coin")
         {
             coins++;
@@ -239,6 +227,20 @@ public class playerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
+    }
+
+    private void OnTriggerStay(Collider triggered)
+    {
+        if (triggered.gameObject.tag == "CamSet")
+        {
+            if (didTurn)
+            {
+                followCamScript.currentCamCenter = triggered.transform;
+            }
+        }
+
+       
     }
     private void OnTriggerExit(Collider triggered)
     {

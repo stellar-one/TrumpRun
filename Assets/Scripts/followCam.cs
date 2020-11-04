@@ -13,9 +13,11 @@ public class followCam : MonoBehaviour
 
     void Awake()
     {
-        currentCamCenter = startingCam;
+        
         playerScript = GameObject.Find("Player").GetComponent<playerController>();
+        startingCam = GameObject.Find("CamSet_Start").transform;
 
+        currentCamCenter = startingCam;
     }
 
 
@@ -26,7 +28,7 @@ public class followCam : MonoBehaviour
     {
 
         if (currentCamCenter == null)
-            Debug.Log("woops");
+            Debug.Log("Add CamreaStart prefab on player start location");
 
         if (playerScript.foward)
         {
