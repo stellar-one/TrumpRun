@@ -1453,7 +1453,8 @@ MonoBehaviour:
   heart: {fileID: 0}
   heart1: {fileID: 0}
   heart2: {fileID: 0}
-  targetCam: {fileID: 0}
+  Panel: {fileID: 0}
+  targetCam: {fileID: 5902275029284608125, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
   didTurn: 0
 --- !u!114 &6125838699528364982
 MonoBehaviour:

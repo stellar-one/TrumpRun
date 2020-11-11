@@ -16,12 +16,13 @@ public class playerController : MonoBehaviour
     public Animator animator;
     public float coins = 0;
     public Text coinText;
-    public GameObject baseMesh,heart,heart1,heart2;
+    public GameObject baseMesh,heart,heart1,heart2,Panel;
     public Transform targetCam;
     private bool colidder = false;
     public bool didTurn = false;
     private bool dead = false;
     followCam followCamScript;
+    
 
     void Awake()
     {
@@ -187,6 +188,7 @@ public class playerController : MonoBehaviour
             dead = true;
             Debug.Log("Dead");
             animator.SetTrigger("killed");
+            Panel.SetActive(true);
         }
 
         if (triggered.gameObject.tag == "Turn")
@@ -214,6 +216,7 @@ public class playerController : MonoBehaviour
                 dead = true;
                 Debug.Log("Dead");
                 animator.SetTrigger("killed");
+                Panel.SetActive(true);
 
             }
         }
@@ -226,6 +229,10 @@ public class playerController : MonoBehaviour
         if (triggered.gameObject.tag == "Finish")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        if (triggered.gameObject.tag == "FinalFinish")
+        {
+            SceneManager.LoadScene(0);
         }
 
     }

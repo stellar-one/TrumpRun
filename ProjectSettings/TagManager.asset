@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - CamSet
   - Fall
+  - FinalFinish
   layers:
   - Default
   - TransparentFX
