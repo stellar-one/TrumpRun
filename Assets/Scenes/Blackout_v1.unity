@@ -1924,6 +1924,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae878cbfaea3aa04789792acd6890f1f, type: 3}
+--- !u!114 &812981729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 679378805149477433, guid: 182d4ef0e29d9ea47bfb3f794c53033c, type: 3}
+  m_PrefabInstance: {fileID: 679378803363214016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9329c7bc209c334c836bb90a73aa91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &817887388 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2062515701602363562, guid: b9a68b132d751574c9efbcb622fecdbd, type: 3}
@@ -3185,6 +3196,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1393971820, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 812981729}
+    - target: {fileID: 1393971820, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 794860279}
+    - target: {fileID: 1393971820, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
+      propertyPath: startingCam
+      value: 
+      objectReference: {fileID: 1391017805}
     - target: {fileID: 5902275029284608125, guid: 28427410aa2c8154baaf840536774ce1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -186,7 +186,6 @@ public class playerController : MonoBehaviour
         if (triggered.gameObject.tag == "Fall")
         {
             dead = true;
-            Debug.Log("Dead");
             animator.SetTrigger("killed");
             Panel.SetActive(true);
         }
@@ -199,7 +198,6 @@ public class playerController : MonoBehaviour
         if (triggered.gameObject.tag == "Enemy")
         {
             Health = Health - 1f;
-            Debug.Log("hit");
             animator.SetTrigger("hit");
             heart.SetActive(false);
 
@@ -213,8 +211,7 @@ public class playerController : MonoBehaviour
             }
             if (Health == 0f)
             {
-                dead = true;
-                Debug.Log("Dead");
+                dead = true; 
                 animator.SetTrigger("killed");
                 Panel.SetActive(true);
 
