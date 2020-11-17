@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fall_Death
       objectReference: {fileID: 0}
+    - target: {fileID: 9208355228294979358, guid: 9d002b993b904ea4d9ef3af519e55d4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9208355228294979359, guid: 9d002b993b904ea4d9ef3af519e55d4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 183.3
@@ -194,6 +198,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9208355228294979359, guid: 9d002b993b904ea4d9ef3af519e55d4d, type: 3}
   m_PrefabInstance: {fileID: 26791534}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &42653582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6125838699528364980, guid: 182d4ef0e29d9ea47bfb3f794c53033c, type: 3}
+  m_PrefabInstance: {fileID: 679378803363214016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &42653584 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 679378805149477434, guid: 182d4ef0e29d9ea47bfb3f794c53033c, type: 3}
+  m_PrefabInstance: {fileID: 679378803363214016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &42653585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42653582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69aaa0076d5c1f242ab6f35a8d39cefc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrounded: 1
+  isAction: 0
+  jumpHeight: 250
+  animator: {fileID: 42653584}
 --- !u!4 &48462395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5343232941597138778, guid: ae878cbfaea3aa04789792acd6890f1f, type: 3}
@@ -1929,7 +1959,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 679378805149477433, guid: 182d4ef0e29d9ea47bfb3f794c53033c, type: 3}
   m_PrefabInstance: {fileID: 679378803363214016}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 42653582}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9329c7bc209c334c836bb90a73aa91b, type: 3}
@@ -3983,6 +4013,10 @@ PrefabInstance:
       propertyPath: Panel
       value: 
       objectReference: {fileID: 114331302}
+    - target: {fileID: 679378805149477433, guid: 182d4ef0e29d9ea47bfb3f794c53033c, type: 3}
+      propertyPath: targetCam
+      value: 
+      objectReference: {fileID: 794860279}
     - target: {fileID: 6125838699528364980, guid: 182d4ef0e29d9ea47bfb3f794c53033c, type: 3}
       propertyPath: m_Name
       value: Player
