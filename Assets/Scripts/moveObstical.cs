@@ -18,7 +18,7 @@ public class moveObstical : MonoBehaviour
     {
         if (playerScript.foward)
         {
-            this.gameObject.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            this.gameObject.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
           
         }
     }
