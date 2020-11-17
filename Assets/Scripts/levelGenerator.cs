@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -44,4 +44,4 @@ public class levelGenerator : MonoBehaviour
      Instantiate(randomObject, spawnPosition, Quaternion.identity);    //.getChidCount
   }
 
-}
+}*/
