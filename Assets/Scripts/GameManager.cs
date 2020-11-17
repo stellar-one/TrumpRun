@@ -37,19 +37,8 @@ public class GameManager : MonoBehaviour
   IEnumerator generatePath(GameObject[] paths){
     WaitForSeconds waitTime = new WaitForSeconds(15);
     while (true) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      randomPath = paths[Random.Range(0, paths.Length)];
-      randomPath.GetComponent<Paths>().spawnPath(randomPath);
-=======
       GameObject randomPath = paths[Random.Range(0, paths.Length)];
       randomPath.GetComponent<Paths>().spawnPath(randomPath, randomPath);
->>>>>>> parent of b745d6f... saving progress, see description...
-=======
-      GameObject randomPath = paths[Random.Range(0, paths.Length)];
-      randomPath.GetComponent<Paths>().spawnPath(randomPath, lastPath);
-      lastPath = randomPath;
->>>>>>> parent of 6260745... path generator working, need to work on left/right turns
       yield return waitTime;
     }
   }
