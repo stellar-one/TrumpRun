@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour
     public bool back;
     public bool left;
     public bool right = true;
+    bool wait = false;
     public Animator animator;
     public float coins = 0;
     public Text coinText;
@@ -22,18 +23,21 @@ public class playerController : MonoBehaviour
     public bool didTurn = false;
     private bool dead = false;
     followCam followCamScript;
+    UI uiScript;
+
     
 
     void Awake()
     {
        followCamScript = GameObject.Find("Base_Cam").GetComponent<followCam>();
-
+       uiScript = GameObject.Find("UI").GetComponent<UI>();
     }
 
 
 
     public void Update()
     {
+        uiScript.slider.value -= 0.3f * Time.deltaTime;
         coinText.text = coins.ToString();
 
         if (colidder == true && didTurn == false)
@@ -200,6 +204,8 @@ public class playerController : MonoBehaviour
             Health = Health - 1f;
             animator.SetTrigger("hit");
             heart.SetActive(false);
+            coins -= 5;
+            uiScript.slider.value -= 10;
 
             if (Health == 1)
             {
@@ -222,6 +228,7 @@ public class playerController : MonoBehaviour
         {
             coins++;
             Destroy(triggered.gameObject);
+            uiScript.slider.value += 1;
         }
         if (triggered.gameObject.tag == "Finish")
         {
@@ -254,4 +261,9 @@ public class playerController : MonoBehaviour
             didTurn = false;
         }
     }  
+
+
+   
+
+
 }

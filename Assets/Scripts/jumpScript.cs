@@ -32,7 +32,7 @@ public class jumpScript : MonoBehaviour
         if (theCollision.gameObject.tag == "Ground" && !isAction)
         {
             isGrounded = true;
-            Debug.Log("Ground");
+          
         }
     }
     IEnumerator jumpWait()
