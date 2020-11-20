@@ -12,6 +12,7 @@ TagManager:
   - CamSet
   - Fall
   - FinalFinish
+  - Obstacles
   layers:
   - Default
   - TransparentFX
