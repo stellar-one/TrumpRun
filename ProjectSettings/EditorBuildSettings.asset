@@ -9,18 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 538f4ade814e1e44c91364eb66fc2c90
   - enabled: 1
-    path: Assets/Scenes/Asset_Level_01.unity
+    path: Assets/Scenes/Level_0.unity
     guid: c63a4d2e74ff0194d893d5e2081a426e
   - enabled: 1
-    path: Assets/Scenes/Blackout_v1.unity
-    guid: 2a4623ccceea4a345b515c375aa5c270
+    path: Assets/Scenes/Level_1.unity
+    guid: 14219d2ccc7c3434bb1500881aa98b4c
   - enabled: 1
-    path: Assets/Scenes/Blackout_v2.unity
-    guid: f7d2a023117469042b3d65b66c0e962a
-  - enabled: 1
-    path: Assets/Scenes/Blackout_v3.unity
-    guid: e8bf5454030048c439fc781b3e8503ee
-  - enabled: 1
-    path: Assets/Scenes/Blackout_v4.unity
-    guid: bfbe9680660803e4ab77c2f927b4544b
+    path: Assets/Scenes/Level_2.unity
+    guid: ee0cfe98239fdc340929299e43fa9fdf
   m_configObjects: {}

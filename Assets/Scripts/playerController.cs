@@ -205,7 +205,7 @@ public class playerController : MonoBehaviour
             animator.SetTrigger("hit");
             heart.SetActive(false);
             coins -= 5;
-            uiScript.slider.value -= 10;
+            uiScript.slider.value -= 2;
 
             if (Health == 1)
             {
@@ -220,6 +220,7 @@ public class playerController : MonoBehaviour
                 dead = true; 
                 animator.SetTrigger("killed");
                 Panel.SetActive(true);
+                uiScript.slider.value -= 10;
 
             }
         }

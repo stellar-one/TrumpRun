@@ -11,7 +11,7 @@ public class UI : MonoBehaviour
 
     public void startGame()
     {
-        playerScript = GameObject.Find("Player").GetComponent<playerController>();
+       // playerScript = GameObject.Find("Player").GetComponent<playerController>();
         
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -31,17 +31,6 @@ public class UI : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-   /* public void Update()
-    {
-        Slider();
-    }
-
-    public void Slider()
-    {
-        
-    }*/
-
 
 }
 
